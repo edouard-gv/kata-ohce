@@ -1,5 +1,6 @@
 package test;
 
+import domain.IWantToQuitException;
 import domain.Ohce;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -52,13 +53,13 @@ public class OhceTest {
     }
 
     @Test
-    public void emptyFlip() {
+    public void emptyFlip() throws IWantToQuitException {
         Ohce ohce = new Ohce(LocalTime.now());
         assertEquals("", ohce.process("").get(0));
     }
 
     @Test
-    public void aFirstFlip() {
+    public void aFirstFlip() throws IWantToQuitException {
         Ohce ohce = new Ohce(LocalTime.now());
         List<String> flip = ohce.process("Flip");
         assertEquals(1, flip.size());
@@ -66,13 +67,13 @@ public class OhceTest {
     }
 
     @Test
-    public void anotherFlip() {
+    public void anotherFlip() throws IWantToQuitException {
         Ohce ohce = new Ohce(LocalTime.now());
         assertEquals("drauodE", ohce.process("Edouard").get(0));
     }
 
     @Test
-    public void aFlipPalindrome() {
+    public void aFlipPalindrome() throws IWantToQuitException {
         Ohce ohce = new Ohce(LocalTime.now());
         List<String> flip = ohce.process("bob");
         assertEquals(2, flip.size());
@@ -81,16 +82,23 @@ public class OhceTest {
     }
 
     @Test
-    public void formattedSingleAnswer() {
+    public void formattedSingleAnswer() throws IWantToQuitException {
         Ohce ohce = new Ohce(LocalTime.now());
         List<String> flip = ohce.process("bobo");
         assertEquals("> obob", ohce.formatMessages(flip));
     }
 
     @Test
-    public void formattedMultipleAnswers() {
+    public void formattedMultipleAnswers() throws IWantToQuitException {
         Ohce ohce = new Ohce(LocalTime.now());
         List<String> flip = ohce.process("bob");
         assertEquals("> bob\n> ¡Bonita palabra!", ohce.formatMessages(flip));
+    }
+
+    @Test
+    public void sayGoodBye() {
+        Ohce ohce = new Ohce(LocalTime.now());
+        assertThrows(IWantToQuitException.class, () ->
+                ohce.process("quit!"));
     }
 }
