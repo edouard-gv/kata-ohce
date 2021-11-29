@@ -51,8 +51,21 @@ public class OhceTest {
     }
 
     @Test
+    public void emptyFlip() {
+        Ohce ohce = new Ohce(LocalTime.now());
+        assertEquals("", ohce.process(""));
+    }
+
+    @Test
     public void aFirstFlip() {
         Ohce ohce = new Ohce(LocalTime.now());
         assertEquals("pilF", ohce.process("Flip"));
     }
+
+    @Test
+    public void anotherFlip() {
+        Ohce ohce = new Ohce(LocalTime.now());
+        assertEquals("drauodE", ohce.process("Edouard"));
+    }
+
 }

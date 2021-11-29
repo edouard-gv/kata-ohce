@@ -46,6 +46,11 @@ public class Ohce {
     }
 
     public String process(String flip) {
-        return "pilF";
+        char[] flipArray = flip.toCharArray();
+        StringBuilder flippedBuffer = new StringBuilder();
+        for (int pos = flipArray.length -1 ; pos >= 0; pos--) {
+            flippedBuffer.append(flipArray[pos]);
+        }
+        return flippedBuffer.toString();
     }
 }
