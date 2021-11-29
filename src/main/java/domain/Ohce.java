@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Ohce {
-    public Ohce(String time) {
+    public Ohce(LocalTime time) {
 
     }
 
@@ -31,7 +31,7 @@ public class Ohce {
 
         String name = args[0];
 
-        System.out.println(new Ohce(LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"))).greet(name));
+        System.out.println(new Ohce(LocalTime.now()).greet(name));
     }
 
 
