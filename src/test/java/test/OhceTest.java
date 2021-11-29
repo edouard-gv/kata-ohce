@@ -49,4 +49,10 @@ public class OhceTest {
         Ohce ohce = new Ohce(time);
         assertEquals("¡Buenas "+wordOut+" Eduardo!", ohce.greet("Eduardo"));
     }
+
+    @Test
+    public void aFirstFlip() {
+        Ohce ohce = new Ohce(LocalTime.now());
+        assertEquals("pilF", ohce.process("Flip"));
+    }
 }

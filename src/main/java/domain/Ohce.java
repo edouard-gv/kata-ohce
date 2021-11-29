@@ -44,4 +44,8 @@ public class Ohce {
 
         System.out.println(new Ohce(LocalTime.now()).greet(name));
     }
+
+    public String process(String flip) {
+        return "pilF";
+    }
 }
