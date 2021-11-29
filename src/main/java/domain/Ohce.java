@@ -71,6 +71,6 @@ public class Ohce {
     }
 
     public String formatMessages(List<String> messages) {
-        return "> "+messages.get(0)+"\n$ ";
+        return "> "+messages.get(0)+(messages.size()>1?"\n> "+messages.get(1):"")+"\n$ ";
     }
 }
