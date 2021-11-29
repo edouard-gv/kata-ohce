@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Ohce {
-    private LocalTime time;
+    private final LocalTime time;
 
     public Ohce(LocalTime time) {
         this.time = time;
@@ -19,13 +19,18 @@ public class Ohce {
     }
 
     public String greet(String name) {
-        if (Integer.parseInt(time.format(DateTimeFormatter.ofPattern("HH"))) == 16) {
-            return "¡Buenas tardes " + name + "!";
+        int hours = Integer.parseInt(time.format(DateTimeFormatter.ofPattern("HH")));
+        if (hours < 6 || hours >= 20) {
+            return greetFormat(name, "noches");
         }
-        if (Integer.parseInt(time.format(DateTimeFormatter.ofPattern("HH"))) == 23) {
-            return "¡Buenas noches " + name + "!";
+        if (hours < 12) {
+            return greetFormat(name, "dias");
         }
-        return "¡Buenas dias " + name + "!";
+        return greetFormat(name, "tardes");
+    }
+
+    private String greetFormat(String name, String dayPeriod) {
+        return "¡Buenas "+dayPeriod+" "+ name + "!";
     }
 
     public static void main(String[] args) {
@@ -39,6 +44,4 @@ public class Ohce {
 
         System.out.println(new Ohce(LocalTime.now()).greet(name));
     }
-
-
 }
