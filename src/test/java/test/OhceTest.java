@@ -84,13 +84,13 @@ public class OhceTest {
     public void formattedSingleAnswer() {
         Ohce ohce = new Ohce(LocalTime.now());
         List<String> flip = ohce.process("bobo");
-        assertEquals("> obob\n$ ", ohce.formatMessages(flip));
+        assertEquals("> obob", ohce.formatMessages(flip));
     }
 
     @Test
     public void formattedMultipleAnswers() {
         Ohce ohce = new Ohce(LocalTime.now());
         List<String> flip = ohce.process("bob");
-        assertEquals("> bob\n> ¡Bonita palabra!\n$ ", ohce.formatMessages(flip));
+        assertEquals("> bob\n> ¡Bonita palabra!", ohce.formatMessages(flip));
     }
 }

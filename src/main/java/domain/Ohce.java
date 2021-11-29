@@ -1,5 +1,9 @@
 package domain;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -35,7 +39,7 @@ public class Ohce {
         return "¡Buenas "+dayPeriod+" "+ name + "!";
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         String check = checkInputArguments(args);
         if (check != null) {
             System.err.println(check);
@@ -44,7 +48,13 @@ public class Ohce {
 
         String name = args[0];
 
-        System.out.println(new Ohce(LocalTime.now()).greet(name));
+        Ohce ohce = new Ohce(LocalTime.now());
+        System.out.println(ohce.greet(name));
+        while (true) {
+            System.out.print("$ ");
+            String input = new BufferedReader(new InputStreamReader(System.in)).readLine();
+            System.out.println(ohce.formatMessages(ohce.process(input)));
+        }
     }
 
     public List<String> process(String flip) {
@@ -71,6 +81,6 @@ public class Ohce {
     }
 
     public String formatMessages(List<String> messages) {
-        return "> "+messages.get(0)+(messages.size()>1?"\n> "+messages.get(1):"")+"\n$ ";
+        return "> "+messages.get(0)+(messages.size()>1?"\n> "+messages.get(1):"");
     }
 }
