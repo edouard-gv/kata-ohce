@@ -2,6 +2,7 @@ package domain;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class Ohce {
     private final LocalTime time;
@@ -45,13 +46,13 @@ public class Ohce {
         System.out.println(new Ohce(LocalTime.now()).greet(name));
     }
 
-    public String process(String flip) {
+    public List<String> process(String flip) {
         char[] flipArray = flip.toCharArray();
         StringBuilder flippedBuffer = new StringBuilder();
         for (int pos = flipArray.length -1 ; pos >= 0; pos--) {
             flippedBuffer.append(flipArray[pos]);
         }
-        return flippedBuffer.toString();
+        return List.of(flippedBuffer.toString());
     }
 
     public boolean isAPalindrome(String a, String b) {

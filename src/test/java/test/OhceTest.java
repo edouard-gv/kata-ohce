@@ -53,24 +53,25 @@ public class OhceTest {
     @Test
     public void emptyFlip() {
         Ohce ohce = new Ohce(LocalTime.now());
-        assertEquals("", ohce.process(""));
+        assertEquals("", ohce.process("").get(0));
     }
 
     @Test
     public void aFirstFlip() {
         Ohce ohce = new Ohce(LocalTime.now());
-        assertEquals("pilF", ohce.process("Flip"));
+        assertEquals("pilF", ohce.process("Flip").get(0));
     }
 
     @Test
     public void anotherFlip() {
         Ohce ohce = new Ohce(LocalTime.now());
-        assertEquals("drauodE", ohce.process("Edouard"));
+        assertEquals("drauodE", ohce.process("Edouard").get(0));
     }
 
     @Test
-    public void blankIsAPalindrome() {
+    public void aFlipPalindrome() {
         Ohce ohce = new Ohce(LocalTime.now());
-        assertTrue(ohce.isAPalindrome("",""));
+        assertEquals("bob", ohce.process("bob").get(0));
     }
+
 }
