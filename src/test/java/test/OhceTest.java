@@ -80,4 +80,10 @@ public class OhceTest {
         assertEquals("¡Bonita palabra!", flip.get(1));
     }
 
+    @Test
+    public void formattedSingleAnswer() {
+        Ohce ohce = new Ohce(LocalTime.now());
+        List<String> flip = ohce.process("bobo");
+        assertEquals("> obob\n$ ", ohce.formatMessages(flip));
+    }
 }

@@ -69,4 +69,8 @@ public class Ohce {
     public boolean isAPalindrome(String a, String b) {
         return true;
     }
+
+    public String formatMessages(List<String> messages) {
+        return "> "+messages.get(0)+"\n$ ";
+    }
 }
