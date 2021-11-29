@@ -53,4 +53,8 @@ public class Ohce {
         }
         return flippedBuffer.toString();
     }
+
+    public boolean isAPalindrome(String a, String b) {
+        return true;
+    }
 }

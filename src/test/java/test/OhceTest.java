@@ -68,4 +68,9 @@ public class OhceTest {
         assertEquals("drauodE", ohce.process("Edouard"));
     }
 
+    @Test
+    public void blankIsAPalindrome() {
+        Ohce ohce = new Ohce(LocalTime.now());
+        assertTrue(ohce.isAPalindrome("",""));
+    }
 }
