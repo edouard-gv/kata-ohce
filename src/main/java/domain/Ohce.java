@@ -4,8 +4,10 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Ohce {
-    public Ohce(LocalTime time) {
+    private LocalTime time;
 
+    public Ohce(LocalTime time) {
+        this.time = time;
     }
 
     public static String checkInputArguments(String[] args) {
@@ -17,7 +19,13 @@ public class Ohce {
     }
 
     public String greet(String name) {
-        return "¡Buenas tardes "+name+"!";
+        if (Integer.parseInt(time.format(DateTimeFormatter.ofPattern("HH"))) == 16) {
+            return "¡Buenas tardes " + name + "!";
+        }
+        if (Integer.parseInt(time.format(DateTimeFormatter.ofPattern("HH"))) == 23) {
+            return "¡Buenas noches " + name + "!";
+        }
+        return "¡Buenas dias " + name + "!";
     }
 
     public static void main(String[] args) {
