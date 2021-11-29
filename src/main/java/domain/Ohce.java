@@ -17,10 +17,8 @@ public class Ohce {
     }
 
     public String greet(String name) {
-        return "¡Buenas tardes Pedro!";
+        return "¡Buenas tardes "+name+"!";
     }
-
-
 
     public static void main(String[] args) {
         String check = checkInputArguments(args);
