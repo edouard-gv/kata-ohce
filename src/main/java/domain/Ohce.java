@@ -2,6 +2,7 @@ package domain;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Ohce {
@@ -52,7 +53,17 @@ public class Ohce {
         for (int pos = flipArray.length -1 ; pos >= 0; pos--) {
             flippedBuffer.append(flipArray[pos]);
         }
-        return List.of(flippedBuffer.toString());
+        String flippedString = flippedBuffer.toString();
+
+        List<String> messageList = new ArrayList<>();
+        messageList.add(flippedString);
+
+        if (flip.equals(flippedString)) {
+            messageList.add("¡Bonita palabra!");
+        }
+
+        return messageList;
+
     }
 
     public boolean isAPalindrome(String a, String b) {

@@ -11,6 +11,7 @@ import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.util.List;
 
 public class OhceTest {
 
@@ -59,7 +60,9 @@ public class OhceTest {
     @Test
     public void aFirstFlip() {
         Ohce ohce = new Ohce(LocalTime.now());
-        assertEquals("pilF", ohce.process("Flip").get(0));
+        List<String> flip = ohce.process("Flip");
+        assertEquals(1, flip.size());
+        assertEquals("pilF", flip.get(0));
     }
 
     @Test
@@ -71,7 +74,10 @@ public class OhceTest {
     @Test
     public void aFlipPalindrome() {
         Ohce ohce = new Ohce(LocalTime.now());
-        assertEquals("bob", ohce.process("bob").get(0));
+        List<String> flip = ohce.process("bob");
+        assertEquals(2, flip.size());
+        assertEquals("bob", flip.get(0));
+        assertEquals("¡Bonita palabra!", flip.get(1));
     }
 
 }
