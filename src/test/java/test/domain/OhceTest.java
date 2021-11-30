@@ -1,4 +1,4 @@
-package test;
+package test.domain;
 
 import domain.IWantToQuitException;
 import domain.Ohce;
@@ -79,20 +79,6 @@ public class OhceTest {
         assertEquals(2, flip.size());
         assertEquals("bob", flip.get(0));
         assertEquals("¡Bonita palabra!", flip.get(1));
-    }
-
-    @Test
-    public void formattedSingleAnswer() throws IWantToQuitException {
-        Ohce ohce = new Ohce(LocalTime.now());
-        List<String> flip = ohce.process("bobo");
-        assertEquals("> obob", ohce.formatMessages(flip));
-    }
-
-    @Test
-    public void formattedMultipleAnswers() throws IWantToQuitException {
-        Ohce ohce = new Ohce(LocalTime.now());
-        List<String> flip = ohce.process("bob");
-        assertEquals("> bob\n> ¡Bonita palabra!", ohce.formatMessages(flip));
     }
 
     @Test
