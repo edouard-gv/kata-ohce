@@ -27,15 +27,15 @@ public class Ohce {
     public String greet(String name) {
         int hours = Integer.parseInt(time.format(DateTimeFormatter.ofPattern("HH")));
         if (hours < SUNRISE || hours >= SUNSET) {
-            return greetFormat(name, NOCHES);
+            return formulateGreeting(name, NOCHES);
         }
         if (hours < MIDDAY) {
-            return greetFormat(name, DIAS);
+            return formulateGreeting(name, DIAS);
         }
-        return greetFormat(name, TARDES);
+        return formulateGreeting(name, TARDES);
     }
 
-    private String greetFormat(String name, String dayPeriod) {
+    private String formulateGreeting(String name, String dayPeriod) {
         return EXCL_MARK_BEGINNING + BUENAS + " " +dayPeriod+" "+ name + EXCL_MARK_END;
     }
 
@@ -52,7 +52,5 @@ public class Ohce {
         }
 
         return messageList;
-
     }
-
 }
