@@ -4,6 +4,8 @@ import domain.IWantToQuitException;
 import domain.Ohce;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import domain.Reverser;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -52,32 +54,22 @@ public class OhceTest {
         assertEquals("¡Buenas "+wordOut+" Eduardo!", ohce.greet("Eduardo"));
     }
 
-    @Test
-    public void emptyFlip() throws IWantToQuitException {
-        Ohce ohce = new Ohce(LocalTime.now());
-        assertEquals("", ohce.process("").get(0));
-    }
 
     @Test
-    public void aFirstFlip() throws IWantToQuitException {
+    public void processOrdinaryMessage() throws IWantToQuitException {
         Ohce ohce = new Ohce(LocalTime.now());
         List<String> flip = ohce.process("Flip");
         assertEquals(1, flip.size());
-        assertEquals("pilF", flip.get(0));
+        assertEquals(Reverser.reverse("Flip"), flip.get(0));
     }
 
-    @Test
-    public void anotherFlip() throws IWantToQuitException {
-        Ohce ohce = new Ohce(LocalTime.now());
-        assertEquals("drauodE", ohce.process("Edouard").get(0));
-    }
 
     @Test
-    public void aFlipPalindrome() throws IWantToQuitException {
+    public void processPalindrome() throws IWantToQuitException {
         Ohce ohce = new Ohce(LocalTime.now());
         List<String> flip = ohce.process("bob");
         assertEquals(2, flip.size());
-        assertEquals("bob", flip.get(0));
+        assertEquals(Reverser.reverse("bob"), flip.get(0));
         assertEquals("¡Bonita palabra!", flip.get(1));
     }
 
